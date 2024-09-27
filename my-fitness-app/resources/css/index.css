@@ -1,0 +1,255 @@
+/* その他の基本設定 */
+html, body {
+    height: 100%; /* ページ全体の高さを100%に設定 */
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* ページ全体の高さを確保し、フッターを下に配置 */
+}
+
+.content {
+    flex: 1; /* フッターが常に下に来るように、コンテンツ部分の高さを調整 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px; /* ヘッダーと重ならないように調整 */
+}
+
+/* ヘッダー */
+.header {
+    background: linear-gradient(70deg, red, pink);
+    color: #FFFDD0;
+    border-bottom: 1px solid #e7e7e7;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.header .title {
+    font-size: 25px;
+    font-family: 'Dancing Script', cursive;
+    position: absolute;
+    left: 49%;
+    transform: translateX(-50%);
+}
+
+.header .hamburger {
+    cursor: pointer;
+    margin-right: auto;
+}
+
+.header .menu {
+    display: none;
+    flex-direction: column;
+    margin-left: 0;
+}
+
+.header .menu.open {
+    display: flex;
+    position: absolute;
+    top: 40px;
+    left: 0;
+    right: auto;
+    background: linear-gradient(70deg, red, pink);
+    padding: 10px 0;
+}
+
+.header .menu a {
+    color: #FFFDD0;
+    text-decoration: none;
+    padding: 5px 20px;
+}
+
+.header .menu a:hover {
+    color: #8B0000;
+}
+
+/* スライダーのスタイル */
+.slider {
+    position: relative;
+    width: 100vw; 
+    height: 500px;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center; /* 横方向で中央に配置 */
+    align-items: center; /* 縦方向で中央に配置 */
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.slide.active {
+    opacity: 1; /* アクティブなスライドを表示 */
+}
+
+.slide-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slide-text {
+    position: absolute;
+    top: 50%; /* 縦方向の中央に配置 */
+    left: 50%; /* 横方向の中央に配置 */
+    transform: translate(-50%, -50%); /* 中央揃え */
+    background: rgba(0, 0, 0, 0.5); /* 半透明の黒い背景 */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.footer {
+    background: rgb(252, 252, 252);
+    padding: 20px;
+    text-align: center;
+    width: 100%; /* フッターの幅を100%に設定 */
+    box-sizing: border-box; /* パディングを含めて幅を計算 */
+    margin-top: auto; /* フッターがページの最下部に表示されるように */
+    transition: height 0.3s ease-in-out; /* フッターの高さが変更されるときのアニメーション */
+}
+
+.footer.open {
+    height: auto; /* フッターが開かれたときに自動で高さが調整される */
+}
+
+.footer form {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer.open form {
+    display: flex; /* お問い合わせフォームが開いたときに表示される */
+}
+
+.footer input, .footer textarea {
+    margin: 5px 0;
+    padding: 10px;
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.footer button {
+    background-color: #8B0000;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.footer button:hover {
+    background-color: #ffffff;
+    color: #8B0000;
+}
+
+.popup {
+    position: fixed;
+    z-index: 110; /* フッターの上に重ならないよう調整 */
+    bottom: 60px; /* フッターの高さを考慮して位置を調整 */
+    right: 30px;
+    width: 240px;
+    background: #1e73be;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.popup p {
+    margin: 0 0 10px;
+}
+
+.popup button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: gray; /* 背景を灰色に */
+    color: white; /* 文字色を白に */
+    border: none;
+    padding: 2px 4px;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 10px; /* 文字サイズを調整 */
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.popup button:hover {
+    background-color: darkgray;
+    color: white;
+}
+
+/* ログイン・新規登録リンクのスタイル */
+.auth-links {
+    display: flex;           /* 子要素を横並びにする */
+    justify-content: center; /* 親要素の中で中央に配置 */
+    gap: 20px;               /* リンク同士の間隔を調整 */
+    margin-top: 20px;        /* 上部の余白を追加 */
+}
+
+.auth-link {
+    font-size: 18px;
+    font-weight: bold;
+    color: #8B0000;          /* 濃い赤色に変更 */
+    background-color: #f5f4ea;
+    padding: 10px 20px;
+    border: 2px solid #8B0000; /* 赤い枠線 */
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+    margin-bottom: 40px;
+}
+
+.auth-link:hover {
+    background-color: #8B0000; /* 背景色を赤に */
+    color: #f5f4ea;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .header .hamburger {
+        display: block;
+    }
+
+    .header .menu {
+        display: none;
+    }
+
+    .header .menu.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 40px; /* ハンバーガーボタンの位置に基づいて調整 */
+        left: 0;
+        right: auto;
+        background: linear-gradient(70deg, red, pink);
+        padding: 10px 0;
+    }
+}
